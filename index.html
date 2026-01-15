@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For My Cutie ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      background: linear-gradient(180deg, #0f0c29, #302b63, #24243e);
+      color: white;
+      overflow: hidden;
+    }
+
+    .container {
+      height: 100vh;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .text {
+      font-size: 1.6rem;
+      line-height: 2.4rem;
+      animation: fade 2s ease-in-out;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tap {
+      position: absolute;
+      bottom: 25px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+  <!-- Replace this with your uploaded song file -->
+  <source src="ye-tune-kya-kiya.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+  <div class="text" id="message"></div>
+</div>
+
+<div class="tap">Tap anywhere ❤️</div>
+
+<script>
+  const messages = [
+    "Hey… 💫",
+    "I don’t know when it started…",
+    "But your presence feels like calm.",
+    "The way you smile… it stays with me.",
+    "You don’t try to be special…",
+    "Yet everything about you is.",
+    "Your vibe, your softness, your silence…",
+    "Somehow it all feels beautiful.",
+    "You make ordinary moments feel warm.",
+    "This isn’t a proposal…",
+    "Just admiration…",
+    "Just feelings…",
+    "Just love in its pure form ❤️"
+  ];
+
+  let index = 0;
+  const msg = document.getElementById("message");
+  const music = document.getElementById("bgMusic");
+
+  document.body.addEventListener("click", () => {
+    music.play();
+  }, { once: true });
+
+  function showMessage() {
+    msg.style.opacity = 0;
+    setTimeout(() => {
+      msg.innerText = messages[index];
+      msg.style.opacity = 1;
+      index++;
+      if (index < messages.length) {
+        setTimeout(showMessage, 3500);
+      }
+    }, 500);
+  }
+
+  showMessage();
+</script>
+
+</body>
+</html>
